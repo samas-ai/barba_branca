@@ -117,7 +117,7 @@ export function Hero({ ready }: { ready: boolean }) {
           </figcaption>
         </figure>
 
-        <p className="hero-title display pointer-events-none relative z-10 mix-blend-difference" aria-hidden="true">
+        <p className="hero-title display pointer-events-none relative z-10" aria-hidden="true">
           <span data-hero-line="1" className="line-mask">
             <Chars text="Barba" />
           </span>

@@ -15,6 +15,25 @@ npm run preview   # serve o build localmente
 
 ---
 
+## Modo demonstração (apresentação ao cliente)
+
+Para mostrar o site já com fotos, existe um modo de prévia com **imagens ilustrativas do Unsplash**
+(licença livre — créditos em `public/demo/CREDITOS.md`). Elas **não são trabalhos do artista**.
+
+```bash
+npm run demo         # desenvolvimento com as fotos ilustrativas — http://localhost:5173
+npm run build:demo   # build de demonstração em /dist
+```
+
+- Nesse modo aparece uma etiqueta **"Prévia"** ao lado do logo e uma nota no rodapé.
+- O build padrão (`npm run build`) **nunca** usa essas fotos — elas nem são copiadas para o `/dist`.
+- **Na Vercel:** para publicar a prévia, use `npm run build:demo` como *Build Command*
+  (Project Settings → Build & Development Settings). Para o site oficial, volte para `npm run build`.
+- Quando as fotos reais estiverem em `public/images/`, a pasta `public/demo/` e o arquivo
+  `src/data/demo.ts` podem ser apagados.
+
+---
+
 ## Como trocar as fotos
 
 Todas as imagens ficam centralizadas em **`src/config/images.ts`**. Basta colocar os arquivos em

@@ -51,6 +51,7 @@ export default function Lightbox({ items, index, onChange, onClose }: LightboxPr
       clipPath: 'inset(0% 0% 100% 0%)',
       duration: 0.85,
       ease: 'expo.inOut',
+      overwrite: true, // interrompe a animação de abertura, se ainda estiver rodando
       onComplete: onClose,
     });
   }, [onClose]);

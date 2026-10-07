@@ -14,7 +14,13 @@
  *  Imagens responsivas (opcional): informe `srcSet`, por exemplo
  *    img('/images/tattoo-01.jpg', 'TATTOO_IMAGE_01',
  *        '/images/tattoo-01-800.jpg 800w, /images/tattoo-01.jpg 1600w')
+ *
+ *  MODO DEMONSTRAÇÃO: `npm run demo` (ou VITE_DEMO=true no build) troca
+ *  /images por /demo — fotos ilustrativas do Unsplash, só para apresentação.
  */
+
+/** Ativo apenas com VITE_DEMO=true — o build padrão nunca usa as fotos ilustrativas. */
+export const DEMO_MODE = import.meta.env.VITE_DEMO === 'true';
 
 export type ImageAsset = {
   /** Caminho público da imagem. */
@@ -25,7 +31,13 @@ export type ImageAsset = {
   srcSet?: string;
 };
 
-const img = (src: string, label: string, srcSet?: string): ImageAsset => ({ src, label, srcSet });
+const demo = (path?: string) => (DEMO_MODE && path ? path.replaceAll('/images/', '/demo/') : path);
+
+const img = (src: string, label: string, srcSet?: string): ImageAsset => ({
+  src: demo(src) ?? src,
+  label,
+  srcSet: demo(srcSet),
+});
 
 export const IMAGES = {
   /* Hero — foto principal (vertical, ~4:5) */

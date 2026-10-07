@@ -4,7 +4,9 @@ dist
 
 # ambiente / ferramentas locais
 *.local
-.env*
+.env
+.env.*
+!.env.demo
 .vercel
 .claude/
 *.log

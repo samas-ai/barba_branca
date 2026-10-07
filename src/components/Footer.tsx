@@ -1,4 +1,5 @@
 import { useEffect, useState, type MouseEvent } from 'react';
+import { DEMO_MODE } from '../config/images';
 import { locationLabel, NAV, SITE } from '../config/site';
 import { scrollToTarget } from '../lib/scroll';
 import { Button } from './ui/Button';
@@ -105,6 +106,12 @@ export function Footer() {
           <Arrow dir="up" />
         </a>
       </div>
+
+      {DEMO_MODE && (
+        <p className="label mt-4 text-iron">
+          Prévia — imagens ilustrativas (Unsplash), a serem substituídas pelas fotos do artista.
+        </p>
+      )}
     </footer>
   );
 }

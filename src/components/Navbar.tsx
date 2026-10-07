@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
+import { DEMO_MODE } from '../config/images';
 import { NAV, SITE } from '../config/site';
 import { gsap, ScrollTrigger, useGSAP } from '../lib/gsap';
 import { MQ } from '../lib/media';
@@ -73,16 +74,27 @@ export function Navbar({ ready }: { ready: boolean }) {
         data-menu-open={menuOpen}
       >
         <div className="gutter flex h-[var(--nav-h)] items-center justify-between gap-6">
-          <a
-            href="#top"
-            onClick={goTo('top')}
-            data-nav-item
-            className="flex items-baseline gap-2.5"
-            aria-label={`${SITE.name} — voltar ao início`}
-          >
-            <span className="gothic text-[1.6rem] leading-none md:text-[1.85rem]">{SITE.shortName}</span>
-            <span className="label hidden text-ash sm:inline">Tattoo</span>
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="#top"
+              onClick={goTo('top')}
+              data-nav-item
+              className="flex items-baseline gap-2.5"
+              aria-label={`${SITE.name} — voltar ao início`}
+            >
+              <span className="gothic text-[1.6rem] leading-none md:text-[1.85rem]">{SITE.shortName}</span>
+              <span className="label hidden text-ash sm:inline">Tattoo</span>
+            </a>
+            {DEMO_MODE && (
+              <span
+                data-nav-item
+                className="label border border-iron px-1.5 py-0.5 text-[0.625rem] text-ash"
+                title="Prévia — imagens ilustrativas (Unsplash), a serem substituídas pelas fotos do artista"
+              >
+                Prévia
+              </span>
+            )}
+          </div>
 
           <nav aria-label="Principal" className="hidden lg:block">
             <ul className="flex items-center gap-10">

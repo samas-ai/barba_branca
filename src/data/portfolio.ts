@@ -1,4 +1,5 @@
-import { IMAGES, type ImageAsset } from '../config/images';
+import { DEMO_MODE, IMAGES, type ImageAsset } from '../config/images';
+import { DEMO_PORTFOLIO } from './demo';
 
 /**
  * PORTFÓLIO
@@ -31,7 +32,7 @@ const entry = (n: number): PortfolioEntry => {
   };
 };
 
-export const PORTFOLIO: PortfolioEntry[] = [
+const ENTRIES: PortfolioEntry[] = [
   entry(1),
   entry(2),
   entry(3),
@@ -45,6 +46,15 @@ export const PORTFOLIO: PortfolioEntry[] = [
   entry(11),
   entry(12),
 ];
+
+/** No modo demonstração, as legendas descrevem as fotos ilustrativas. */
+export const PORTFOLIO: PortfolioEntry[] = DEMO_MODE
+  ? ENTRIES.map((item, i) =>
+      DEMO_PORTFOLIO[i]
+        ? { ...item, ...DEMO_PORTFOLIO[i], alt: `Imagem ilustrativa — ${DEMO_PORTFOLIO[i].title}` }
+        : item,
+    )
+  : ENTRIES;
 
 /*
  * Exemplo de item preenchido (substitua o entry(n) correspondente):
