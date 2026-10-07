@@ -1,0 +1,12 @@
+# dependências e build
+node_modules
+dist
+
+# ambiente / ferramentas locais
+*.local
+.env*
+.vercel
+.claude/
+*.log
+.DS_Store
+Thumbs.db
